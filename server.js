@@ -17,7 +17,7 @@ app.use(cros());
 
 
 // getting db connection
-require("./DB/conn");
+require("./db/conn");
 
 
 // api routers
