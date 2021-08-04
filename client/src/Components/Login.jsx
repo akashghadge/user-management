@@ -52,7 +52,7 @@ const Login = () => {
 	function SendUser(event) {
 		event.preventDefault()
 		setLoading(true);
-		const url = "http://localhost:5000/api/admin/in";
+		const url = "/api/admin/in";
 		axios.post(url, {
 			password: allCurrentData.password,
 			email: allCurrentData.email

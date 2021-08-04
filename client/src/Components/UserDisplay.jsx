@@ -33,7 +33,7 @@ const UserDisplay = () => {
     let [allCurrentData, setAllCurrentData] = useState([]);
     // fetching user data
     useEffect(() => {
-        const url = "http://localhost:5000/api/user/all";
+        const url = "/api/user/all";
         setLoading(true);
         axios.get(url)
             .then((data) => {
@@ -49,7 +49,7 @@ const UserDisplay = () => {
     // delete paritucalr user using users ID
     function clickDelete(e, id) {
         console.log(id);
-        let url = "http://localhost:5000/api/user/delete";
+        let url = "/api/user/delete";
         axios.post(url,
             {
                 id: id
@@ -67,8 +67,6 @@ const UserDisplay = () => {
     console.log(allCurrentData);
     return (
         <>
-
-
             {
 
                 loading ?

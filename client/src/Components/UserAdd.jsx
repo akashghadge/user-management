@@ -82,7 +82,7 @@ const UserAdd = () => {
     // useeffect for verifing the admin
     useEffect(() => {
         let token = localStorage.getItem("token");
-        const urlProfileDetails = "http://localhost:5000/api/admin/verify";
+        const urlProfileDetails = "/api/admin/verify";
         axios.post(urlProfileDetails, { token: token })
             .then((data) => {
                 console.log("verified");
@@ -103,7 +103,7 @@ const UserAdd = () => {
         }
         // add user api
         setLoading(true);
-        const url = "http://localhost:5000/api/user/add";
+        const url = "/api/user/add";
         axios.post(url, {
             mobile: parseInt(allCurrentData.mobile),
             email: allCurrentData.email,
