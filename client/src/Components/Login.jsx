@@ -102,7 +102,7 @@ const Login = () => {
 								</div>
 							</div>
 							<div className="allignCenterSignIN">
-								<Button id="addContactUs" className={classes.profileButtonFollow} onClick={SendUser}>Save</Button>
+								<Button id="addContactUs" className={classes.profileButtonFollow} onClick={SendUser}>Login</Button>
 							</div>
 						</div>
 
