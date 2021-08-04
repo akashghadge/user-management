@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import axios from "axios"
-import { useHistory, NavLink } from "react-router-dom";
-// mui
+import { useHistory } from "react-router-dom";
 // snack bar code
 import SnackBarCustom from "./SmallComponents/SnackBarCustom"
+// mui
 import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+// react loading
 import ReactLoading from "react-loading"
 const useStyles = makeStyles((theme) => ({
 	profileButtonFollow: {
@@ -33,7 +34,7 @@ const Login = () => {
 	}
 	let history = useHistory();
 	let [allCurrentData, setAllCurrentData] = useState({
-		username: "",
+		email: "",
 		password: ""
 	});
 	function inputChange(event) {
@@ -51,19 +52,19 @@ const Login = () => {
 	function SendUser(event) {
 		event.preventDefault()
 		setLoading(true);
-		const url = "http://localhost:5000/api/user/in";
+		const url = "http://localhost:5000/api/admin/in";
 		axios.post(url, {
-			username: allCurrentData.username,
-			password: allCurrentData.password
+			password: allCurrentData.password,
+			email: allCurrentData.email
 		})
 			.then((data) => {
 				let token = data.data.jwt;
 				localStorage.setItem("token", token);
 				setAllCurrentData({
-					username: "",
-					password: ""
+					password: "",
+					email: ""
 				})
-				setSnackbarObj({ text: `hello ${allCurrentData.username}`, backgroundColor: "green" })
+				setSnackbarObj({ text: `hello ${allCurrentData.email}`, backgroundColor: "green" })
 				setOpen(true);
 				setLoading(false);
 				history.push("/user-add");
@@ -92,8 +93,8 @@ const Login = () => {
 						<div className="containerSignIN">
 							<div className="widthSignIn" style={{ wordSpacing: "10px" }}>
 								<div className="allignCenterSignIN">
-									<span className="signINUPText">Username</span>
-									<input type="text" className="signINUPInputFields" id="username" placeholder="akash@3" onChange={inputChange} value={allCurrentData.username} required style={{ boxShadow: "none" }}></input>
+									<span className="signINUPText" style={{ marginRight: "2rem" }}>Email</span>
+									<input type="text" className="signINUPInputFields" id="email" placeholder="admin@gmail.com" onChange={inputChange} value={allCurrentData.email} required style={{ boxShadow: "none" }}></input>
 								</div>
 								<div className="allignCenterSignIN">
 									<span className="signINUPText">Password</span>

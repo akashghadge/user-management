@@ -3,10 +3,12 @@ const router = Router();
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const verify = require("../middleware/verify");
 //models and middlewares  
 const Admin = require("../models/Admin.model");
 
 router.post("/in", async (req, res) => {
+    console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
     // getting user data
@@ -38,7 +40,12 @@ router.post("/in", async (req, res) => {
         res.status(401).json("invalid email");
     }
 })
-
+router.post("/verify", verify, (req, res) => {
+    res.status(200).json({
+        username: res.locals.username,
+        id: res.locals.id
+    });
+})
 // user addding route
 router.post("/add", (req, res) => {
     // geting data from request

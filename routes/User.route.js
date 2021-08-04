@@ -7,6 +7,7 @@ const { handleErrors } = require("../helper/handleErrors")
 // user addding route
 router.post("/add", (req, res) => {
     // geting data from request
+    console.log(req.body);
     const email = req.body.email;
     const username = req.body.username;
     const mobile = req.body.mobile;
@@ -33,7 +34,8 @@ router.post("/add", (req, res) => {
                             console.log(saveUser);
                         })
                         .catch((err) => {
-                            res.status(404).json(err);
+                            console.log(err);
+                            res.status(500).json(err);
                             // console.log(err);
                         })
                 }

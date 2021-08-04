@@ -20,7 +20,7 @@ const UserSchema = new Schema
         username:
         {
             type: String,
-            minLength: [6, 'minimum password length is 6 charecters'],
+            minLength: [3, 'minimum username length is 3 charecters'],
             required: [true, 'please enter username']
         },
         address:
