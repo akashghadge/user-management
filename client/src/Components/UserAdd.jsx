@@ -55,6 +55,13 @@ const UserAdd = () => {
         var re = /\S+@\S+\.\S+/;
         return re.test(allCurrentData.email);
     }
+    // username
+    function validateUser() {
+        var re1 = /^[a-zA-Z0-9]/;
+        var re2 = /\s/;
+        var re3 = /[!@#\$%\^\&*\)\(+=._-]/;
+        return (!re2.test(allCurrentData.username) && !re3.test(allCurrentData.username) && re1.test(allCurrentData.username));
+    }
     // main validation
     function validateMain() {
         if (!validateEmail()) {
@@ -64,6 +71,11 @@ const UserAdd = () => {
         }
         else if (allCurrentData.mobile.length != 10) {
             setSnackbarObj({ text: "Invalid Mobile Number", backgroundColor: "red" })
+            setOpen(true);
+            return false;
+        }
+        else if (!validateUser()) {
+            setSnackbarObj({ text: "Username must not conaian spaces and special symbols", backgroundColor: "red" })
             setOpen(true);
             return false;
         }

@@ -189,6 +189,12 @@
 }
 
 @media (max-width:700px) {
+
+    .signINHeadDiv,
+    .screen2HeadDiv {
+        height: 15vh;
+    }
+
     .userBase {
         font-size: 0.9rem;
         margin: 1rem;
